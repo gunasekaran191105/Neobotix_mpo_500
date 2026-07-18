@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>neobotix_mpo_500</name>
+  <version>1.0.0</version>
+  <description>URDF Description package for neobotix_mpo_500</description>
+  <maintainer email="gunz@todo.todo">gunz</maintainer>
+  <license>BSD</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  
+  <!-- Gazebo & Visualization Dependencies -->
+  <exec_depend>ros_gz_sim</exec_depend>
+  <exec_depend>ros_gz_bridge</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>xacro</exec_depend>
+
+  <!-- Navigation 2 & Plugin Dependencies -->
+  <depend>nav2_common</depend>
+  <depend>nav2_core</depend>
+  <depend>nav2_costmap_2d</depend>
+  <depend>nav2_navfn_planner</depend>
+  <depend>nav2_controller</depend>
+  <depend>pluginlib</depend>
+  <depend>rclcpp</depend>
+  <depend>geometry_msgs</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+    <!-- This line tells Nav2 where to find your custom PSO plugin -->
+    <nav2_core plugin="${prefix}/pso_plugin.xml" />
+  </export>
+</package>

@@ -1,0 +1,55 @@
+# Teleop commands (ROS to Gazebo's magic plugin)
+- ros_topic_name: "/cmd_vel"
+  gz_topic_name: "/neobotix_mpo_500/cmd_vel_gz"
+  ros_type_name: "geometry_msgs/msg/Twist"
+  gz_type_name: "ignition.msgs.Twist"
+  direction: ROS_TO_GZ
+
+# Simulation Time
+- ros_topic_name: "/clock"
+  gz_topic_name: "/clock"
+  ros_type_name: "rosgraph_msgs/msg/Clock"
+  gz_type_name: "ignition.msgs.Clock"
+  direction: GZ_TO_ROS
+
+# Joint States for RViz
+- ros_topic_name: "/joint_states"
+  gz_topic_name: "/neobotix_mpo_500/joint_states"
+  ros_type_name: "sensor_msgs/msg/JointState"
+  gz_type_name: "ignition.msgs.Model"
+  direction: GZ_TO_ROS
+
+# Lidar Sensor Data
+- ros_topic_name: "/scan_raw"
+  gz_topic_name: "/lidar/scan"
+  ros_type_name: "sensor_msgs/msg/LaserScan"
+  gz_type_name: "ignition.msgs.LaserScan"
+  direction: GZ_TO_ROS
+
+# Wheel 1 Visual Command
+- ros_topic_name: "/neobotix_mpo_500/wheel_1/cmd_vel"
+  gz_topic_name: "/neobotix_mpo_500/wheel_1/cmd_vel"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "ignition.msgs.Double"
+  direction: ROS_TO_GZ
+
+# Wheel 2 Visual Command
+- ros_topic_name: "/neobotix_mpo_500/wheel_2/cmd_vel"
+  gz_topic_name: "/neobotix_mpo_500/wheel_2/cmd_vel"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "ignition.msgs.Double"
+  direction: ROS_TO_GZ
+
+# Wheel 3 Visual Command
+- ros_topic_name: "/neobotix_mpo_500/wheel_3/cmd_vel"
+  gz_topic_name: "/neobotix_mpo_500/wheel_3/cmd_vel"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "ignition.msgs.Double"
+  direction: ROS_TO_GZ
+
+# Wheel 4 Visual Command
+- ros_topic_name: "/neobotix_mpo_500/wheel_4/cmd_vel"
+  gz_topic_name: "/neobotix_mpo_500/wheel_4/cmd_vel"
+  ros_type_name: "std_msgs/msg/Float64"
+  gz_type_name: "ignition.msgs.Double"
+  direction: ROS_TO_GZ

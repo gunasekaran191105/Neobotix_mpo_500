@@ -1,0 +1,5 @@
+<library path="neobotix_pso_planner">
+  <class name="neobotix_mpo_500/PsoPlanner" type="neobotix_mpo_500::PsoPlanner" base_class_type="nav2_core::GlobalPlanner">
+    <description>A custom Particle Swarm Optimization (PSO) global planner plugin for Nav2.</description>
+  </class>
+</library>

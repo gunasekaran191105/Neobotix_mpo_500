@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="neobotix_mpo_500" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <link name="base_footprint"/>
+  <joint name="base_footprint_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <!-- Wheel Z offset is -0.0695, radius is ~0.125. 0.125 + 0.0695 = 0.1945 -->
+    <origin xyz="0 0 0.1945" rpy="0 0 0"/>
+  </joint>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.0256676534522073 -1.75256135478974E-05 0.0197583725255792" rpy="0 0 0" />
+      <mass value="99.9941250990312" />
+      <inertia ixx="2.59830231125293" ixy="-0.000782873053846597" ixz="0.321647608268646" iyy="4.1760312438908" iyz="0.000104490647560942" izz="5.24462822654489" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://neobotix_mpo_500/meshes/base_link.STL" />
+      </geometry>
+      <material name="grey"><color rgba="0.792 0.820 0.933 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://neobotix_mpo_500/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="lidar">
+    <inertial>
+      <origin xyz="0 0 2.22044604925031E-16" rpy="0 0 0" />
+      <mass value="1.27793705962725" />
+      <inertia ixx="0.00574507254630929" ixy="-2.75849340992963E-35" ixz="-1.98770398289009E-19" iyy="0.00574507254630929" iyz="-9.02879550923129E-36" izz="0.0011814528116254" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://neobotix_mpo_500/meshes/lidar.STL" />
+      </geometry>
+      <material name="dark_grey"><color rgba="0.2 0.2 0.2 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://neobotix_mpo_500/meshes/lidar.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="lidar_1" type="fixed">
+    <origin xyz="0.453999999999999 0 0.3142" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="lidar" />
+  </joint>
+
+  <link name="front_left">
+    <inertial>
+      <origin xyz="6.13567202600862E-08 0.00039207571315969 -9.57781993715656E-08" rpy="0 0 0" />
+      <mass value="4.25709704918953" />
+      <inertia ixx="0.00728188988239518" ixy="1.62573097341839E-09" ixz="3.08263229981666E-08" iyy="0.00895762169032392" iyz="1.04146143361687E-09" izz="0.00728186151011583" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://neobotix_mpo_500/meshes/front_left.STL" />
+      </geometry>
+      <material name="orange"><color rgba="1.0 0.55 0.0 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://neobotix_mpo_500/meshes/front_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel_1" type="continuous">
+    <origin xyz="0.25 0.29265 -0.0695000000000006" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="front_left" />
+    <axis xyz="0 1 0" />
+  </joint>
+
+  <link name="rear_left">
+    <inertial>
+      <origin xyz="5.74112119682141E-05 0.00110281085116448 -9.22361132402738E-05" rpy="0 0 0" />
+      <mass value="4.25709704891045" />
+      <inertia ixx="0.0072818071794464" ixy="-1.18603733545073E-10" ixz="1.77025317471887E-08" iyy="0.00895762172137745" iyz="-9.33767910947096E-10" izz="0.00728194430945289" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://neobotix_mpo_500/meshes/rear_left.STL" />
+      </geometry>
+      <material name="orange"><color rgba="1.0 0.55 0.0 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://neobotix_mpo_500/meshes/rear_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel_2" type="continuous">
+    <origin xyz="-0.25 0.29265 -0.0694999999999997" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="rear_left" />
+    <axis xyz="0 1 0" />
+  </joint>
+
+  <link name="front_right">
+    <inertial>
+      <origin xyz="-0.000108540712441152 0.00110281052866531 4.73936175082734E-06" rpy="0 0 0" />
+      <mass value="4.25709704890638" />
+      <inertia ixx="0.00728188403445877" ixy="-7.03465733830758E-10" ixz="-7.03263740529191E-08" iyy="0.0089576217204286" iyz="6.25407153103861E-10" izz="0.00728186745323767" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://neobotix_mpo_500/meshes/front_right.STL" />
+      </geometry>
+      <material name="orange"><color rgba="1.0 0.55 0.0 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://neobotix_mpo_500/meshes/front_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel_3" type="continuous">
+    <origin xyz="0.25 -0.29265 -0.0694999999999999" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="front_right" />
+    <axis xyz="0 1 0" />
+  </joint>
+
+  <link name="rear_right">
+    <inertial>
+      <origin xyz="8.51609689572763E-08 -0.000392077722549759 7.54036992844931E-08" rpy="0 0 0" />
+      <mass value="4.2570970491888" />
+      <inertia ixx="0.00728187159485602" ixy="-1.27989617539825E-09" ixz="-3.36841939733111E-08" iyy="0.00895762169124088" iyz="1.44551565424546E-09" izz="0.00728187981291911" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://neobotix_mpo_500/meshes/rear_right.STL" />
+      </geometry>
+      <material name="orange"><color rgba="1.0 0.55 0.0 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://neobotix_mpo_500/meshes/rear_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel_4" type="continuous">
+    <origin xyz="-0.25 -0.29265 -0.0695000000000006" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="rear_right" />
+    <axis xyz="0 1 0" />
+  </joint>
+
+  <!-- ================= GAZEBO FORTRESS PLUGINS ================= -->
+  <xacro:macro name="wheel_friction" params="link">
+    <gazebo reference="${link}">
+      <mu1>0.0</mu1>
+      <mu2>0.0</mu2>
+      <kp>1000000.0</kp>
+      <kd>100.0</kd>
+      <maxVel>1.0</maxVel>
+      <minDepth>0.001</minDepth>
+    </gazebo>
+  </xacro:macro>
+  <xacro:wheel_friction link="front_left"/>
+  <xacro:wheel_friction link="rear_left"/>
+  <xacro:wheel_friction link="front_right"/>
+  <xacro:wheel_friction link="rear_right"/>
+
+  <xacro:macro name="wheel_joint_controller" params="joint_name">
+    <gazebo>
+      <plugin filename="ignition-gazebo-joint-controller-system" name="ignition::gazebo::systems::JointController">
+        <joint_name>${joint_name}</joint_name>
+        <topic>/neobotix_mpo_500/${joint_name}/cmd_vel</topic>
+        <initial_velocity>0.0</initial_velocity>
+        <p_gain>10.0</p_gain>
+        <i_gain>0.1</i_gain>
+        <d_gain>0.0</d_gain>
+        <i_max>1.0</i_max>
+        <i_min>-1.0</i_min>
+        <cmd_max>50.0</cmd_max>
+        <cmd_min>-50.0</cmd_min>
+      </plugin>
+    </gazebo>
+  </xacro:macro>
+  <xacro:wheel_joint_controller joint_name="wheel_1"/>
+  <xacro:wheel_joint_controller joint_name="wheel_2"/>
+  <xacro:wheel_joint_controller joint_name="wheel_3"/>
+  <xacro:wheel_joint_controller joint_name="wheel_4"/>
+
+  <gazebo>
+    <plugin filename="ignition-gazebo-velocity-control-system" name="ignition::gazebo::systems::VelocityControl">
+      <topic>/neobotix_mpo_500/cmd_vel_gz</topic>
+      <odom_frame_id>odom</odom_frame_id>
+      <robot_base_frame>base_footprint</robot_base_frame>
+    </plugin>
+  </gazebo>
+
+  <gazebo>
+    <plugin filename="ignition-gazebo-joint-state-publisher-system" name="ignition::gazebo::systems::JointStatePublisher">
+      <topic>/neobotix_mpo_500/joint_states</topic>
+    </plugin>
+  </gazebo>
+
+  <gazebo reference="lidar">
+    <sensor name="lidar_sensor" type="gpu_lidar">
+      <pose>0 0 0 0 0 0</pose>
+      <topic>/lidar/scan</topic>
+      <gz_frame_id>lidar</gz_frame_id>
+      <update_rate>10</update_rate>
+      <always_on>true</always_on>
+      <visualize>true</visualize>
+      <lidar>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.14159265</min_angle>
+            <max_angle>3.14159265</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.05</min>
+          <max>12.0</max>
+          <resolution>0.01</resolution>
+        </range>
+      </lidar>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="base_link">
+    <sensor name="imu_sensor" type="imu">
+      <pose>0 0 0 0 0 0</pose>
+      <topic>/imu</topic>
+      <update_rate>50</update_rate>
+      <always_on>true</always_on>
+    </sensor>
+  </gazebo>
+
+
+</robot>
